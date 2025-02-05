@@ -49,7 +49,7 @@
         if (isNaN(amount) || amount <= 0) {
           output.innerHTML = "Ievadi derīgu daudzumu";
         }
-        let result;
+      let result;
         switch (fromCurrency.value) {
           case "USD":
             result =
@@ -57,7 +57,7 @@
             break;
           case "EUR":
             result =
-              amount * { USD: 1.180, GBP: 0.88, EUR: 1 }[toCurrency.value];
+              amount * { USD: 1.18, GBP: 0.88, EUR: 1 }[toCurrency.value];
             break;
           case "GBP":
             result =
@@ -68,9 +68,8 @@
             break;
         }
 
-        output.innerHTML = `${result}`;
+        output.innerHTML = `${amount} ${fromCurrency.value} = ${result} ${toCurrency.value}`;
       }
-
     </script>
   </body>
 </html>
