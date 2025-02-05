@@ -6,6 +6,15 @@
     <title>Currency Calculator</title>
   </head>
   <body>
+    <style>
+        body {
+            font-family: monospace;
+            margin:5pt;
+        }
+        .rezultats {
+            font-weight: bold;
+        }
+    </style>
     <div class="container">
       <h1>Valūtas kalkulātors</h1>
       <label for="amount">Daudzums:</label>
@@ -68,7 +77,7 @@
             break;
         }
 
-        output.innerHTML = `${amount} ${fromCurrency.value} = ${result} ${toCurrency.value}`;
+        output.innerHTML = `<span class="rezultats">${amount} ${fromCurrency.value} = ${result} ${toCurrency.value}</span>`;
       }
     </script>
   </body>
