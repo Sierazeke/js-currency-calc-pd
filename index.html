@@ -33,43 +33,42 @@
     </div>
 
     <script>
-      const fromCurrencyInput = document.getElementById("from-currency");
-      const toCurrencyInput = document.getElementById("to-currency");
+      let fromCurrencyInput = document.getElementById("from-currency");
+      let toCurrencyInput = document.getElementById("to-currency");
       const btn = document.getElementById("convert-btn");
       const amountInput = document.getElementById("amount");
-      let result = document.getElementById("result");
+      let output = document.getElementById("result");
 
       btn.addEventListener("click", handleClick);
 
       function handleClick() {
-        const fromCurrency = fromCurrencyInput;
-        const toCurrency = toCurrencyInput;
+        let fromCurrency = fromCurrencyInput;
+        let toCurrency = toCurrencyInput;
         const amount = parseFloat(amountInput.value);
 
         if (isNaN(amount) || amount <= 0) {
-          result.innerHTML = "Ievadi derīgu daudzumu";
+          output.innerHTML = "Ievadi derīgu daudzumu";
         }
-
-        let convertedAmount;
-        switch (fromCurrency) {
+        let result;
+        switch (fromCurrency.value) {
           case "USD":
-            convertedAmount =
-              amount * { EUR: 0.85, GBP: 0.75, USD: 1 };
+            result =
+              amount * { EUR: 0.85, GBP: 0.75, USD: 1 }[toCurrency.value];
             break;
           case "EUR":
-            convertedAmount =
-              amount * { USD: 1.18, GBP: 0.88, EUR: 1 };
+            result =
+              amount * { USD: 1.180, GBP: 0.88, EUR: 1 }[toCurrency.value];
             break;
           case "GBP":
-            convertedAmount =
-              amount * { USD: 1.33, EUR: 1.14, GBP: 1 };
+            result =
+              amount * { USD: 1.33, EUR: 1.14, GBP: 1 }[toCurrency.value];
             break;
 
           default:
             break;
         }
 
-        result = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
+        output.innerHTML = `${result}`;
       }
 
     </script>
